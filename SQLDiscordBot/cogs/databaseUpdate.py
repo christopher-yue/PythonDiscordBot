@@ -22,7 +22,7 @@ class Database(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    #CLEAR <--- move to another cog
+    #CLEAR
     @commands.command()
     @commands.has_permissions(manage_messages=True)
     async def clear(self, ctx, limit: Optional[int] = 1):
@@ -31,7 +31,7 @@ class Database(commands.Cog):
             deleted = await ctx.channel.purge(limit = limit)
             await ctx.send(f"Deleted `" + str(len(deleted)) + "` messages", delete_after=3)
 
-    #ADD MEMBERS <--- currently working
+    #ADD MEMBERS
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def addm(self, ctx, member: discord.Member):
@@ -67,7 +67,7 @@ class Database(commands.Cog):
             await ctx.send("Member has already been added")
         db.commit()
         
-    #DROP MEMBERS <--- currently working
+    #DROP MEMBERS
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def dropm(self, ctx, member: discord.Member=None):
@@ -82,7 +82,7 @@ class Database(commands.Cog):
             await ctx.send("Member does not exist")
 
 
-    #ADD ROLES <--- currently working
+    #ADD ROLES
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def addr(self, ctx, roleName):
@@ -100,7 +100,7 @@ class Database(commands.Cog):
         else:
             await ctx.send("Role has already been added")
         
-    #UPDATE ROLES <--- change them instead of deleting them
+    #UPDATE ROLES
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def updater(self, ctx, oldRole, newRole):
@@ -127,7 +127,7 @@ class Database(commands.Cog):
                 await ctx.send("New role already exists")
         db.commit()    
 
-    #UPDATE MEMBERS <--- currently working
+    #UPDATE MEMBERS
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def updatem(self, ctx, member: discord.Member=None):
@@ -165,7 +165,7 @@ class Database(commands.Cog):
             await ctx.send("Member does not exist")
         db.commit()
 
-    #PRINT ROLES <--- currently working
+    #PRINT ROLES
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def printr(self, ctx):
